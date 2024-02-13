@@ -1,0 +1,1 @@
+# postdelete-hook-issue2

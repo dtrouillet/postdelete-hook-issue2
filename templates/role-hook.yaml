@@ -1,0 +1,17 @@
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: hook
+  annotations:
+    argocd.argoproj.io/hook: PostDelete
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+rules:
+  - verbs:
+      - get
+      - update
+      - patch
+    apiGroups: [""]
+    resources: ["namespaces"]
+    resourceNames:
+      - {{ .Release.Namespace }}
+
